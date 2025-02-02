@@ -17,7 +17,7 @@ const ChatArea = ({ currentChat, messages, onSendMessage, isOpen }) => {
       setInput('');
 
       try {
-        const response = await fetch('https://0a16-42-113-20-81.ngrok-free.app/api/message', {
+        const response = await fetch('http://localhost:5000/api/message', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text: input }),
