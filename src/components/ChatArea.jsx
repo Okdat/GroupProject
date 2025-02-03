@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ChatArea.css';
 
-
-const API_URL = process.env.REACT_APP_API_URL || 'http://34.226.119.226:5000';
 const ChatArea = ({ currentChat, messages, onSendMessage, isOpen }) => {
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
@@ -19,11 +17,13 @@ const ChatArea = ({ currentChat, messages, onSendMessage, isOpen }) => {
       setInput('');
 
       try {
-        const response = await fetch(`${API_URL}/api/message`, {
+        const response = await fetch('https://dfaa-42-113-20-81.ngrok-free.app/api/message', {
+
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text: input }),
         });
+
         if (!response.ok) {
           throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
